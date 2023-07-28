@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SpotifyService } from './spotify.service';
+import { SpotifyData } from 'src/models/spotify.models';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'spotify-app';
+
+export class AppComponent{
+
 }
