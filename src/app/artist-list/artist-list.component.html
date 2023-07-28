@@ -1,14 +1,19 @@
-<div class="no-artist" *ngIf="this.artistName === ''">
+<div class="no-artist" *ngIf="this.artistName === '' || !this.artistName">
   <h1>Please Enter an Artists Name</h1>
+</div>
+
+<div class="no-artist" *ngIf="spotifyData && spotifyData.artists && spotifyData.artists.items.length === 0
+&& this.artistName != ''">
+  <h1>No Artist Found</h1>
 </div>
 
 <section *ngIf="this.artistName != '' && spotifyData && spotifyData.artists &&
 spotifyData.artists.items && spotifyData.artists.items.length > 0">
-  <div class="artist-container" *ngFor="let artist of spotifyData.artists.items; let i = index">
-        <div *ngIf="i < 5">
+  <div class="artist-container" *ngFor="let artist of spotifyData.artists.items | slice:0:5; let i = index">
+        <div>
           <h1><span>{{i + 1}}. </span>{{artist.name}}</h1>
         </div>
-        <div *ngIf="i < 5">
+        <div>
           <img *ngIf="artist.images && artist.images.length > 0" src={{artist.images[0].url}} alt="artist image">
           <img src="../../assets/no image.jpg" *ngIf="artist.images.length === 0">
         </div>

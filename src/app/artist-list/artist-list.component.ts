@@ -16,7 +16,7 @@ export class ArtistListComponent implements OnInit {
 
   constructor(private spotifyService: SpotifyService, private sharedService: SharedServiceService) {}
   ngOnInit(): void {
-    const accessToken = "enter your access token here";
+    const accessToken = "enter access token here";
     this.spotifyService.setAccessToken(accessToken);
 
     this.sharedService.artistName$.subscribe(name => {
