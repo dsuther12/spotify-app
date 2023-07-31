@@ -8,12 +8,17 @@ section {
 
 .artist-container {
   display: flex;
+  flex-direction: column;
+  width: 800px;
+}
+
+.artist-inner-container {
+  display: flex;
   justify-content: center;
   width: 1000px;
   background-color: aqua;
   align-items: center;
   border: 2px solid black;
-
 }
 
 .artist-container img {
@@ -43,4 +48,8 @@ section {
   display: flex;
   justify-content: center;
   margin-top: 5rem;
+}
+
+.button {
+  cursor: pointer;
 }
