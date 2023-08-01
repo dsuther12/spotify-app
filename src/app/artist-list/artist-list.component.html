@@ -7,6 +7,12 @@
   <h1>No Artist Found</h1>
 </div>
 
+<div class="invalid" *ngIf="invalidFlag">
+  <h1>Unauthorized. Please make sure you are using a
+    valid Spotify API Key.
+  </h1>
+</div>
+
 <section *ngIf="this.artistName != '' && spotifyData && spotifyData.artists &&
 spotifyData.artists.items && spotifyData.artists.items.length > 0">
   <div class="artist-container" *ngFor="let artist of spotifyData.artists.items | slice:0:5; let i = index">

@@ -3,6 +3,7 @@ import { SpotifyService } from '../spotify.service';
 import { SpotifyData } from 'src/models/spotify.models';
 import { SharedServiceService } from '../shared-service.service';
 import { SelectedArtistServiceService } from '../selected-artist-service.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-artist-list',
@@ -16,7 +17,10 @@ export class ArtistListComponent implements OnInit {
   spotifyData!: SpotifyData;
   showContent: boolean = false;
   selectedArtistId!: any;
-  accessToken: any = "enter access token here";
+  accessToken: any = "enter spotify API key here";
+  invalidFlag!: boolean;
+
+
 
   constructor(private spotifyService: SpotifyService, private sharedService: SharedServiceService, private selectedArtistService: SelectedArtistServiceService) {}
   ngOnInit(): void {
@@ -36,8 +40,14 @@ export class ArtistListComponent implements OnInit {
     this.spotifyService.searchArtist(artist).subscribe({
       next: (response: any) => {
         this.spotifyData = response;
-        console.log("repeat repeat repeat")
+        this.invalidFlag = false;
         console.log(response);
+      },
+      error: (error: HttpErrorResponse) => {
+        if ((error.status) === 401) {
+          this.invalidFlag = true;
+          console.error("Unauthorized. Please make sure you are using a valid Spotify API key");
+        }
       }
     }
     )

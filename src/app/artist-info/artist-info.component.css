@@ -1,0 +1,37 @@
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-container div {
+  display: flex;
+}
+
+.info-container .divider {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.info-container .divider h1 {
+  font-size: 2rem;
+  margin-block: 30px;
+}
+
+.album-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 50px 50px 0px;
+}
+
+.album-container .album-metadata {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.album-images {
+  width: 200px;
+  height: 200px;
+}

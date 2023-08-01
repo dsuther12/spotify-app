@@ -1,4 +1,22 @@
-<div *ngIf="selectedArtistInfo">
-  <h2>{{selectedArtistInfo.name}}</h2>
+<div class="info-container" *ngIf="selectedArtistInfo">
+  <div class="divider"><h1>Artist Metadata:</h1></div>
+  <div><h2>Followers: {{selectedArtistInfo.followers.total.toLocaleString()}}</h2></div>
+  <div>
+    <h2>Genres:&nbsp;</h2>
+    <h2 *ngFor="let genre of selectedArtistInfo.genres">| {{genre}} |&nbsp;</h2>
+  </div>
+  <div>
+    <h2>Popularity: {{selectedArtistInfo.popularity}}</h2>
+  </div>
+  <div class="divider"><h1>Albums: </h1></div>
+  <div><h2>Newest Albums:</h2></div>
+  <div class="album-container" *ngFor="let album of selectedArtistAlbums.items | slice:0:5">
+    <div class="album-metadata">
+      <h2>{{album.name}}:&nbsp;</h2>
+      <p>Released: {{album.release_date}}</p>
+      <p>Total Tracks: {{album.total_tracks}}</p>
+    </div>
+    <img class="album-images" src={{album.images[0].url}}>
+  </div>
 </div>
 

@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ArtistListComponent } from '../artist-list/artist-list.component';
 import { SpotifyService } from '../spotify.service';
-import { Observable } from 'rxjs';
+import { Albums } from 'src/models/albums.models';
+import { TopTracks } from 'src/models/top-tracks.models';
+import { Artists } from 'src/models/artists.models';
 
 @Component({
   selector: 'app-artist-info',
@@ -11,9 +12,9 @@ import { Observable } from 'rxjs';
 export class ArtistInfoComponent {
 
   @Input() selectedArtistId: any;
-  selectedArtistInfo!: any;
-  selectedArtistAlbums!: object;
-  selectedArtistTopTen!: object;
+  selectedArtistInfo!: Artists;
+  selectedArtistAlbums!: Albums;
+  selectedArtistTopTen!: TopTracks;
 
   constructor(private spotifyService: SpotifyService) {}
 
@@ -41,6 +42,7 @@ export class ArtistInfoComponent {
     .subscribe({
       next: (response: any) => {
         this.selectedArtistAlbums = response;
+        console.log(this.selectedArtistAlbums);
         console.log(this.selectedArtistAlbums);
       }
     })
